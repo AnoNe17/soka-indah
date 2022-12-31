@@ -34,7 +34,7 @@ class MasterController extends Controller
 
     public function siswaExport()
     {
-        return Excel::download(new SiswaExport, 'siswapaud.xlsx' );
+        return Excel::download(new SiswaExport, 'siswapaud.xlsx');
     }
     public function siswaImport(Request $request)
     {
@@ -42,7 +42,7 @@ class MasterController extends Controller
         $namaFile = $file->getClientOriginalName();
         $file->move('DataSiswa', $namaFile);
 
-        Excel::import(new SiswaImport, public_path('/DataSiswa/'.$namaFile));
+        Excel::import(new SiswaImport, public_path('/DataSiswa/' . $namaFile));
         return redirect('/master/data-siswa/');
     }
     public function createDataSiswa()
@@ -69,7 +69,7 @@ class MasterController extends Controller
 
     public function storeDataSiswa(Request $request, $id = null)
     {
-        // return $request;
+        // return $id;
         $data = new MasterSiswa;
         if ($id) {
             $data = MasterSiswa::find($id);
@@ -90,21 +90,23 @@ class MasterController extends Controller
         $data->alamat = $request->input('alamat');
         $data->foto = $request->input('foto');
 
-        // Create user siswa
-        // $userSiswa = new User;
+        $userSiswa = new User;
 
-        // $userSiswa->name = 'Siswa';
-        // $userSiswa->username = $request->input('no_induk');
-        // $userSiswa->email = 'siswa' . $request->input('no_induk') . '@paudsokaindah.com';
+        if (!empty($id)) {
+            $userSiswa = User::find($data->user_id);
+        }
 
-        // $pass = '@SokaIndah' . $request->input('no_induk');
+        $userSiswa->name = 'Siswa';
+        $userSiswa->username = $request->input('no_induk');
+        $userSiswa->email = 'siswa' . $request->input('no_induk') . '@paudsokaindah.com';
 
-        // $userSiswa->password = bcrypt($pass);
-        // if ($userSiswa->save()) {
-        // //     $data->user_id = $userSiswa->id;
-        //     //...///
-        // }
-        $data->save();
+        $pass = 'sokaindah' . $request->input('no_induk');
+
+        $userSiswa->password = bcrypt($pass);
+        if ($userSiswa->save()) {
+            $data->user_id = $userSiswa->id;
+            $data->save();
+        }
         return Redirect::to(url('master/data-siswa'));
     }
 
@@ -116,8 +118,31 @@ class MasterController extends Controller
         return Redirect::to(url('master/data-siswa'));
     }
 
-   
-   
+    public function createPasswordDataSiswa($id)
+    {
+        $user = MasterSiswa::find($id);
+
+        return view('auth.register_siswa', [
+            'user' => $user,
+        ]);
+    }
+
+    public function storePasswordDataSiswa(Request $request)
+    {
+        $pass = Hash::make($request->password);
+        $data = User::where('id', $request->id)->first();
+        $data->password = $pass;
+
+        if ($data->save()) {
+            return Redirect::to(url('master/data-siswa'));
+        } else {
+            return back();
+        }
+    }
+
+
+
+
 
     // MASTER GURU
     // -----------------------------------------------------------------------------------------
@@ -162,7 +187,7 @@ class MasterController extends Controller
 
     public function storePasswordDataPengguna(Request $request)
     {
-        
+
         $request = $request->all();
         $dataPengguna = MasterPengguna::find($request['id_pengguna']);
 

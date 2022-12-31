@@ -40,7 +40,8 @@
                             @endphp -->
                             <div class="form-group">
                                 <label class="col-form-label">No. Induk</label>
-                                <input type="text" class="form-control" required name="no_induk" value="{{ isset($model) ? $model->no_induk : ''}}">
+                                <input type="text" class="form-control" value="{{ isset($model) ? $model->no_induk : $nis}}" disabled>
+                                <input type="hidden" class="form-control" name="no_induk" value="{{ isset($model) ? $model->no_induk : $nis}}" >
                             </div>
 
                             <div class="form-group">

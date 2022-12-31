@@ -45,6 +45,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="{{ url('master/data-siswa/create-password/'.$row->id) }}" class="dropdown-item"><i class="icon-key"></i>Ubah Password</a>
                                     <a href="{{ url('master/data-siswa/edit/'.$row->id) }}" class="dropdown-item"><i class="icon-pencil"></i>Edit</a>
                                     <a href="{{ url('master/data-siswa/delete/'.$row->id) }}" onclick="confirm('Apakah anda yakin ingin menghapus data ini?')" class="dropdown-item"><i class="icon-trash"></i>Delete</a>
                                 </div>

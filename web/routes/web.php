@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'],  function () use ($router) {
             $router->post('/store', [\App\Http\Controllers\MasterController::class, 'storeDataSiswa']);
             $router->post('/store/{id}', [\App\Http\Controllers\MasterController::class, 'storeDataSiswa']);
             $router->get('/delete/{id}', [\App\Http\Controllers\MasterController::class, 'deleteDataSiswa']);
+            $router->get('/create-password/{id}', [\App\Http\Controllers\MasterController::class, 'createPasswordDataSiswa']);
+            $router->post('/create-password', [\App\Http\Controllers\MasterController::class, 'storePasswordDataSiswa']);
         });
 
         Route::group(['prefix' => '/data-pengguna'], function () use ($router) {

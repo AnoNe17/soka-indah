@@ -29,4 +29,9 @@ class MasterSiswa extends Model
         'alamat',
         'foto'
     ];
+
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }
