@@ -18,7 +18,7 @@ class Dashboard extends StatefulWidget {
 }
 
 class DashboardState extends State<Dashboard> {
-  MenuItem currentItem = MenuItems.home;
+  ItemMenu currentItem = MenuItems.home;
 
   @override
   Widget build(BuildContext context) => ZoomDrawer(

@@ -5,17 +5,17 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import '../../login/login.dart';
 
 class MenuItems {
-  static const home = MenuItem('Home', Icons.home);
-  static const nilai = MenuItem('Nilai', Icons.library_books);
-  static const profil = MenuItem('Profil', Icons.person);
-  static const about = MenuItem('About', Icons.star);
+  static const home = ItemMenu('Home', Icons.home);
+  static const nilai = ItemMenu('Nilai', Icons.library_books);
+  static const profil = ItemMenu('Profil', Icons.person);
+  static const about = ItemMenu('About', Icons.star);
 
-  static const allMenu = <MenuItem>[home, nilai, profil, about];
+  static const allMenu = <ItemMenu>[home, nilai, profil, about];
 }
 
 class MenuPage extends StatelessWidget {
-  final MenuItem currentItem;
-  final ValueChanged<MenuItem> onSelectedItem;
+  final ItemMenu currentItem;
+  final ValueChanged<ItemMenu> onSelectedItem;
   const MenuPage(
       {Key? key, required this.currentItem, required this.onSelectedItem})
       : super(key: key);
@@ -143,7 +143,7 @@ class MenuPage extends StatelessWidget {
     );
   }
 
-  Widget buildMenuItem(MenuItem item) => ListTile(
+  Widget buildMenuItem(ItemMenu item) => ListTile(
         selectedTileColor: Colors.black26,
         selected: currentItem == item,
         minLeadingWidth: 20,

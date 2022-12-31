@@ -7,8 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'model_data/mingguan.dart';
 
-const String baseURL =
-    "https://soka-indah.paud.proyek.ti.polindra.ac.id/api/"; //emulator localhost
+const String baseURL = "http://192.168.0.102:8033/api/"; //emulator localhost
 const Map<String, String> header = {"Content-Type": "application/json"};
 
 class Http {
@@ -92,10 +91,6 @@ class Http {
   }
 
   Future getMingguan(int? semester) async {
-    const String baseURL =
-        "https://soka-indah.paud.proyek.ti.polindra.ac.id/api/"; //emulator localhost
-    const Map<String, String> header = {"Content-Type": "application/json"};
-
     var url = Uri.parse(baseURL + 'penilaian/semester');
     String? id_siswa = await getIdSiswa();
     int? smt = semester;
@@ -109,7 +104,7 @@ class Http {
         headers: header,
         body: body,
       );
-      // print(response.body);
+      print(response.body);
 
       if (response.statusCode == 200) {
         Iterable it = jsonDecode(response.body);

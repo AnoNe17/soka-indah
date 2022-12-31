@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 
-class MenuItem {
+class ItemMenu {
   final String title;
   final IconData icon;
 
-  const MenuItem(this.title, this.icon);
+  const ItemMenu(this.title, this.icon);
 }
