@@ -1,6 +1,5 @@
 class Mingguan {
-  final int? minggu_ke;
-  final String? tema, sub_tema;
+  final String? tema, sub_tema, minggu_ke;
 
   Mingguan({this.minggu_ke, this.tema, this.sub_tema});
 

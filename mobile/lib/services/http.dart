@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'model_data/mingguan.dart';
 
-const String baseURL = "http://192.168.0.102:8033/api/"; //emulator localhost
+const String baseURL = "https://paudsokaindah.com/api/"; //emulator localhost
 const Map<String, String> header = {"Content-Type": "application/json"};
 
 class Http {
@@ -37,11 +37,11 @@ class Http {
     try {
       var dataLogin = json.decode(response.body)["user"];
 
-      // print(dataLogin);
-
       SharedPreferences pref = await SharedPreferences.getInstance();
       pref.setString('id_user', dataLogin["id"].toString());
-      // pref.setString('id_siswa', dataLogin["id_user"].toString());
+      pref.setString('id_siswa', dataLogin["id_user"].toString());
+
+      // print(dataLogin);
 
       return response;
     } catch (e) {

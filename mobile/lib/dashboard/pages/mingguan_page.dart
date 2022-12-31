@@ -84,7 +84,7 @@ class _MingguanPageState extends State<MingguanPage> {
                         "${listMingguan[index].sub_tema}",
                         "${listMingguan[index].tema}",
                         "${listMingguan[index].sub_tema}",
-                        listMingguan[index].minggu_ke,
+                        int.parse("${listMingguan[index].minggu_ke}"),
                         widget.semester),
                     SizedBox(
                       height: 10,

@@ -21,6 +21,8 @@ class ApiController extends Controller
             'password' => 'required',
         ]));
         $user = User::where('username', $request->username)->where('name', 'Siswa')->first();
+        $id_siswa = MasterSiswa::where('user_id', $user->id)->first()->id;
+        $user->id_siswa = $id_siswa;
 
         if ($user && Hash::check($request->password, $user->password)) {
             $token = md5(time()) . '.' . md5($request->username);
