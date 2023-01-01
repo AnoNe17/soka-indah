@@ -2,7 +2,7 @@
     package="com.paudtest.name">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="proyek3_mobile"
+        android:label="Paud Soka Indah"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -44,7 +44,7 @@ class _MingguanPageState extends State<MingguanPage> {
           itemCount: listMingguan.length,
           itemBuilder: (context, index) {
             // Jika data mingguan Kosong
-            if (listMingguan[index].minggu_ke == 0) {
+            if (listMingguan[index].minggu_ke == "0") {
               return Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
